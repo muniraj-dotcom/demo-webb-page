@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Watch Pair</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:black;
+      color:white;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:420px;
+      text-align:center;
+    }
+
+    h1{
+      font-size:55px;
+      margin-bottom:20px;
+      font-weight:bold;
+    }
+
+    .message{
+      font-size:22px;
+      line-height:1.5;
+      color:#f1f1f1;
+      margin-bottom:25px;
+      padding:0 10px;
+    }
+
+    .learn-more{
+      color:#ff9f0a;
+      font-size:20px;
+      margin-bottom:35px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .learn-more:hover{
+      color:#ffb340;
+    }
+
+    .watch-image{
+      width:100%;
+      margin-bottom:35px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    .pair-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:20px;
+      background:#2c2c2e;
+      color:white;
+      font-size:22px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      margin-bottom:20px;
+    }
+
+    .pair-btn:hover{
+      background:#3a3a3c;
+      transform:scale(1.02);
+    }
+
+    .feature-btn{
+      width:100%;
+      padding:18px;
+      border:2px solid #ff9f0a;
+      border-radius:20px;
+      background:transparent;
+      color:#ff9f0a;
+      font-size:22px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .feature-btn:hover{
+      background:#ff9f0a;
+      color:black;
+    }
+
+    .features-box{
+      display:none;
+      margin-top:25px;
+      background:#111;
+      border-radius:20px;
+      padding:20px;
+      text-align:left;
+      animation:fadeIn 0.5s ease;
+    }
+
+    .features-box h2{
+      text-align:center;
+      margin-bottom:15px;
+      color:#ff9f0a;
+    }
+
+    .features-box ul{
+      list-style:none;
+    }
+
+    .features-box li{
+      padding:12px 0;
+      border-bottom:1px solid #333;
+      color:#ddd;
+      font-size:18px;
+    }
+
+    .features-box li:last-child{
+      border-bottom:none;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-10px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(10px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Welcome</h1>
+
+    <p class="message">
+      If you have a Apple Watch, you can pair it with your iPhone here.
+    </p>
+
+    <div class="learn-more">
+      Learn more about Apple Watch
+    </div>
+
+    <img 
+      src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1200&auto=format&fit=crop"
+      alt="Apple Watch"
+      class="watch-image"
+    >
+
+    <button class="pair-btn" onclick="startPairing()">
+      Start Pairing
+    </button>
+
+    <button class="feature-btn" onclick="toggleFeatures()">
+      View Features
+    </button>
+
+    <div class="features-box" id="features">
+
+      <h2>Apple Watch Features</h2>
+
+      <ul>
+        <li>⌚ Stylish Smart Watch Design</li>
+        <li>❤️ Heart Rate Monitoring</li>
+        <li>🏃 Fitness & Activity Tracking</li>
+        <li>📞 Call & Message Notifications</li>
+        <li>🎵 Music Control</li>
+        <li>🛰️ GPS Navigation</li>
+        <li>🔋 Long Battery Life</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function startPairing(){
+      alert("Searching for Apple Watch...");
+    }
+
+    function toggleFeatures(){
+
+      const features =
+      document.getElementById("features");
+
+      if(features.style.display === "block"){
+        features.style.display = "none";
+      }
+      else{
+        features.style.display = "block";
+      }
+    }
+
+  </script>
+
+</body>
+</html>
