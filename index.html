@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple Watch Pair</title>
+  <title>Apple Watch Pairing</title>
 
   <style>
 
@@ -11,149 +11,96 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:Arial, sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body{
-      background:black;
+      background: linear-gradient(to right, #000000, #1f1f1f);
       color:white;
-      min-height:100vh;
+      height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
-      padding:20px;
     }
 
     .container{
-      width:100%;
-      max-width:420px;
+      width:90%;
+      max-width:500px;
+      background:#111;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 0 20px rgba(255,255,255,0.2);
       text-align:center;
     }
 
     h1{
-      font-size:55px;
-      margin-bottom:20px;
-      font-weight:bold;
-    }
-
-    .message{
-      font-size:22px;
-      line-height:1.5;
-      color:#f1f1f1;
-      margin-bottom:25px;
-      padding:0 10px;
-    }
-
-    .learn-more{
-      color:#ff9f0a;
-      font-size:20px;
-      margin-bottom:35px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .learn-more:hover{
-      color:#ffb340;
-    }
-
-    .watch-image{
-      width:100%;
-      margin-bottom:35px;
-      animation:float 3s ease-in-out infinite;
-    }
-
-    .pair-btn{
-      width:100%;
-      padding:18px;
-      border:none;
-      border-radius:20px;
-      background:#2c2c2e;
-      color:white;
-      font-size:22px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-      margin-bottom:20px;
-    }
-
-    .pair-btn:hover{
-      background:#3a3a3c;
-      transform:scale(1.02);
-    }
-
-    .feature-btn{
-      width:100%;
-      padding:18px;
-      border:2px solid #ff9f0a;
-      border-radius:20px;
-      background:transparent;
-      color:#ff9f0a;
-      font-size:22px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .feature-btn:hover{
-      background:#ff9f0a;
-      color:black;
-    }
-
-    .features-box{
-      display:none;
-      margin-top:25px;
-      background:#111;
-      border-radius:20px;
-      padding:20px;
-      text-align:left;
-      animation:fadeIn 0.5s ease;
-    }
-
-    .features-box h2{
-      text-align:center;
+      color:#ff3b30;
       margin-bottom:15px;
-      color:#ff9f0a;
     }
 
-    .features-box ul{
-      list-style:none;
-    }
-
-    .features-box li{
-      padding:12px 0;
-      border-bottom:1px solid #333;
+    p{
       color:#ddd;
-      font-size:18px;
+      margin-bottom:20px;
+      line-height:1.5;
     }
 
-    .features-box li:last-child{
-      border-bottom:none;
+    button{
+      background:#ff3b30;
+      color:white;
+      border:none;
+      padding:12px 20px;
+      border-radius:10px;
+      cursor:pointer;
+      margin-top:10px;
+      font-size:16px;
     }
 
-    @keyframes float{
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(-10px);
-      }
-
-      100%{
-        transform:translateY(0px);
-      }
+    button:hover{
+      background:#ff5e57;
     }
 
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(10px);
-      }
+    .page{
+      display:none;
+    }
 
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+    .active{
+      display:block;
+    }
+
+    .feature-box{
+      background:#1f1f1f;
+      padding:15px;
+      margin:15px 0;
+      border-radius:12px;
+      text-align:left;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      margin-top:10px;
+      border:none;
+      border-radius:8px;
+      outline:none;
+    }
+
+    .result{
+      margin-top:10px;
+      color:#00ff99;
+      font-weight:bold;
+    }
+
+    .status{
+      background:#222;
+      padding:12px;
+      border-radius:10px;
+      margin-top:10px;
+      line-height:1.8;
+    }
+
+    img{
+      width:180px;
+      margin-bottom:20px;
     }
 
   </style>
@@ -161,67 +108,261 @@
 
 <body>
 
-  <div class="container">
+  <!-- Welcome Page -->
 
-    <h1>Welcome</h1>
+  <div class="container page active" id="homePage">
 
-    <p class="message">
-      If you have a Apple Watch, you can pair it with your iPhone here.
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Apple_Watch_logo.svg/512px-Apple_Watch_logo.svg.png">
+
+    <h1>Welcome to Apple Watch Pair</h1>
+
+    <p>
+      If you have an Apple Watch, you can pair it with your iPhone here
+      and explore Apple Watch health and smart features.
     </p>
 
-    <div class="learn-more">
-      Learn more about Apple Watch
+    <button onclick="openFeatures()">
+      Pair Apple Watch
+    </button>
+
+  </div>
+
+  <!-- Features Page -->
+
+  <div class="container page" id="featurePage">
+
+    <h1>Apple Watch Features</h1>
+
+    <!-- Step Counter -->
+
+    <div class="feature-box">
+      <h3>👣 Step Counter</h3>
+
+      <input type="number" id="steps" placeholder="Enter steps">
+
+      <button onclick="calculateSteps()">
+        Calculate
+      </button>
+
+      <div class="result" id="stepsResult"></div>
     </div>
 
-    <img 
-      src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1200&auto=format&fit=crop"
-      alt="Apple Watch"
-      class="watch-image"
-    >
+    <!-- Blood Pressure -->
 
-    <button class="pair-btn" onclick="startPairing()">
-      Start Pairing
-    </button>
+    <div class="feature-box">
+      <h3>🩸 Blood Pressure</h3>
 
-    <button class="feature-btn" onclick="toggleFeatures()">
-      View Features
-    </button>
+      <input type="number" id="bp" placeholder="Enter BP value">
 
-    <div class="features-box" id="features">
+      <button onclick="checkBP()">
+        Check BP
+      </button>
 
-      <h2>Apple Watch Features</h2>
+      <div class="result" id="bpResult"></div>
+    </div>
 
-      <ul>
-        <li>⌚ Stylish Smart Watch Design</li>
-        <li>❤️ Heart Rate Monitoring</li>
-        <li>🏃 Fitness & Activity Tracking</li>
-        <li>📞 Call & Message Notifications</li>
-        <li>🎵 Music Control</li>
-        <li>🛰️ GPS Navigation</li>
-        <li>🔋 Long Battery Life</li>
-      </ul>
+    <!-- Running -->
 
+    <div class="feature-box">
+      <h3>🏃 Running Distance</h3>
+
+      <input type="number" id="running" placeholder="Enter running steps">
+
+      <button onclick="calculateRunning()">
+        Calculate Distance
+      </button>
+
+      <div class="result" id="runResult"></div>
+    </div>
+
+    <!-- Heartbeat -->
+
+    <div class="feature-box">
+      <h3>❤️ Heartbeat</h3>
+
+      <input type="number" id="heart" placeholder="Enter heartbeat BPM">
+
+      <button onclick="checkHeart()">
+        Check Heartbeat
+      </button>
+
+      <div class="result" id="heartResult"></div>
+    </div>
+
+    <!-- Battery Percentage -->
+
+    <div class="feature-box">
+      <h3>🔋 Battery Percentage</h3>
+
+      <button onclick="batteryLevel()">
+        Show Battery
+      </button>
+
+      <div class="result" id="batteryResult"></div>
+    </div>
+
+    <!-- Time -->
+
+    <div class="feature-box">
+      <h3>🕒 Current Time</h3>
+
+      <button onclick="showTime()">
+        Show Time
+      </button>
+
+      <div class="result" id="timeResult"></div>
+    </div>
+
+    <!-- Bluetooth -->
+
+    <div class="feature-box">
+      <h3>📶 Bluetooth Connectivity</h3>
+
+      <button onclick="bluetoothStatus()">
+        Check Bluetooth
+      </button>
+
+      <div class="result" id="bluetoothResult"></div>
+    </div>
+
+    <!-- Notifications -->
+
+    <div class="feature-box">
+      <h3>🔔 Notifications</h3>
+
+      <button onclick="showNotifications()">
+        Show Notifications
+      </button>
+
+      <div class="result" id="notificationResult"></div>
+    </div>
+
+    <!-- Inbuilt Features -->
+
+    <div class="feature-box">
+      <h3>⌚ Inbuilt Apple Watch Features</h3>
+
+      <div class="status">
+        ✅ Fitness Tracking <br>
+        ✅ Heart Rate Monitor <br>
+        ✅ Sleep Tracking <br>
+        ✅ GPS Navigation <br>
+        ✅ Music Control <br>
+        ✅ Call & Message Alerts <br>
+        ✅ Emergency SOS <br>
+        ✅ Bluetooth Connectivity
+      </div>
     </div>
 
   </div>
 
   <script>
 
-    function startPairing(){
-      alert("Searching for Apple Watch...");
+    // Open Features Page
+
+    function openFeatures(){
+      document.getElementById("homePage").classList.remove("active");
+      document.getElementById("featurePage").classList.add("active");
     }
 
-    function toggleFeatures(){
+    // Step Counter
 
-      const features =
-      document.getElementById("features");
+    function calculateSteps(){
 
-      if(features.style.display === "block"){
-        features.style.display = "none";
+      let steps = document.getElementById("steps").value;
+
+      document.getElementById("stepsResult").innerHTML =
+      "You walked " + steps + " steps today!";
+    }
+
+    // Blood Pressure
+
+    function checkBP(){
+
+      let bp = document.getElementById("bp").value;
+
+      let result = "";
+
+      if(bp < 80){
+        result = "Low Blood Pressure";
+      }
+      else if(bp <= 120){
+        result = "Normal Blood Pressure";
       }
       else{
-        features.style.display = "block";
+        result = "High Blood Pressure";
       }
+
+      document.getElementById("bpResult").innerHTML = result;
+    }
+
+    // Running Distance
+
+    function calculateRunning(){
+
+      let running = document.getElementById("running").value;
+
+      let distance = running * 0.0008;
+
+      document.getElementById("runResult").innerHTML =
+      "Approx Distance: " + distance.toFixed(2) + " km";
+    }
+
+    // Heartbeat
+
+    function checkHeart(){
+
+      let heart = document.getElementById("heart").value;
+
+      let result = "";
+
+      if(heart < 60){
+        result = "Low Heartbeat";
+      }
+      else if(heart <= 100){
+        result = "Normal Heartbeat";
+      }
+      else{
+        result = "High Heartbeat";
+      }
+
+      document.getElementById("heartResult").innerHTML = result;
+    }
+
+    // Battery Percentage
+
+    function batteryLevel(){
+
+      let battery = Math.floor(Math.random() * 100);
+
+      document.getElementById("batteryResult").innerHTML =
+      "Battery Percentage: " + battery + "%";
+    }
+
+    // Time
+
+    function showTime(){
+
+      let now = new Date();
+
+      document.getElementById("timeResult").innerHTML =
+      "Current Time: " + now.toLocaleTimeString();
+    }
+
+    // Bluetooth Connectivity
+
+    function bluetoothStatus(){
+
+      document.getElementById("bluetoothResult").innerHTML =
+      "Bluetooth Connected Successfully ✅";
+    }
+
+    // Notifications
+
+    function showNotifications(){
+
+      document.getElementById("notificationResult").innerHTML =
+      "📩 3 New Messages <br> 📞 1 Missed Call <br> 🔔 Fitness Goal Completed";
     }
 
   </script>
